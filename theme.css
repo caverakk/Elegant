@@ -1,0 +1,407 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Global Variables */
+
+:root {
+    --background-color: rgb(0, 0, 0);
+    --border-color: rgb(31, 31, 31);
+    --border-color-hover: rgb(43, 43, 43);
+    --primary-color: rgb(160, 106, 207);
+    --text-color: #bbbbbb;
+
+    --primary-font: "Cormorant";
+    --secondary-font: "Prompt";
+}
+
+body {
+    font-family: var(--secondary-font);
+    font-weight: 400;
+}
+
+.workspace-tab-header-container {
+    background-color: #000000;
+}
+
+.titlebar-button-container {
+    background-color: transparent !important;
+}
+
+.sidebar-toggle-button.mod-left {
+    background-color: #000000;
+}
+
+.theme-dark .cm-content,
+.theme-dark .markdown-preview-view {
+    color: var(--text-color);
+    /* Cor do texto para o modo escuro */
+}
+
+.theme-dark {
+    /* General */
+
+    --background-primary: #000000;
+    --background-secondary: #000000;
+    --divider-color: var(--border-color);
+    --divider-color-hover: var(--border-color-hover);
+
+    /* Text Settings */
+
+    --font-text-theme: var(--primary-font);
+    --font-size-normal: 18px;
+    --line-height-normal: 1.6;
+
+    /* Heading Settings */
+
+    --h1-size: 45px;
+    --h2-size: 36px;
+    --h3-size: 30px;
+    --h4-size: 24px;
+    --h5-size: 20px;
+
+    --h1-weight: regular;
+    --h2-weight: regular;
+    --h3-weight: regular;
+    --h4-weight: regular;
+    --h5-weight: regular;
+    --h6-weight: regular;
+
+    /* Checkbox Settings */
+
+    --checkbox-radius: 12px;
+    --checkbox-color: var(--primary-color);
+    --checklist-done-decoration: none;
+
+    /* List Settings */
+
+    --list-spacing: 2.5px;
+    --list-bullet-size: 4.5px;
+    --list-marker-color: var(--text-color);
+
+    /* Link Settings */
+
+    --link-decoration: none;
+    --link-decoration-hover: none;
+    --link-color: var(--primary-color);
+
+    --link-external-decoration: none;
+    --link-external-decoration-hover: none;
+    --link-external-color: var(--primary-color);
+
+    /* Table Settings */
+
+    --table-background: rgb(0, 0, 0);
+    --table-border-width: 0.8px;
+    --table-border-color: var(--border-color);
+    --table-header-size: 13.9px;
+    --table-header-weight: regular;
+    --table-header-color: rgb(156, 156, 156);
+
+    /* Canvas */
+    --canvas-background: var(--background-color);
+    --canvas-dot-pattern: var(--border-color);
+
+    --canvas-color-1: var(--background-color);
+    --canvas-color-2: var(--background-color);
+    --canvas-color-3: var(--background-color);
+}
+
+.canvas-selection {
+    border-radius: 5px;
+    border: 0px;
+    z-index: 50;
+}
+
+.canvas-node.is-selected .canvas-node-container,
+.canvas-node.is-focused .canvas-node-container {
+    border-color: var(--border-color-hover);
+}
+
+.canvas-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    --resizer-size: 20px;
+    --shadow-stationary: none;
+    --shadow-drag: none;
+    --shadow-border-accent: none;
+    --zoom-multiplier: 1;
+    background-color: var(--canvas-background);
+    overflow: hidden;
+    contain: strict;
+    touch-action: none;
+    user-select: none;
+}
+
+.canvas-edges polygon.canvas-path-end {
+    pointer-events: none;
+    stroke: var(--border-color);
+    fill: var(--border-color);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 0.8px;
+    transform-box: fill-box;
+    transform: none;
+    transform-origin: center top;   
+}
+
+.canvas-control-item {
+    border-radius: 0;
+    box-shadow: none;
+    height: auto;
+    display: flex;
+    line-height: 1;
+    font-size: inherit;
+    align-items: center;
+    justify-content: center;
+    cursor: var(--cursor);
+    padding: var(--size-4-2);
+    color: var(--text-color);
+    background-color: rgb(0, 0, 0);
+    --icon-size: 18px;
+    --icon-stroke: 1.8px;
+}
+
+.canvas-control-item:hover {
+    background-color: rgb(19, 19, 19);
+}
+
+.tooltip {
+    font-weight: 450;
+    color: var(--text-color);
+}
+
+.canvas-card-menu {
+    background-color: var(--background-primary);
+    border-radius: 100px;
+
+    border-color: var(--border-color);
+    bottom: var(--size-4-4);
+    left: 50%;
+    transform: translatex(-50%);
+    align-items: stretch;
+}
+
+.canvas-card-menu .canvas-card-menu-button {
+    color: var(--text-color);
+    height: auto;
+    display: flex;
+    line-height: 1;
+    align-items: center;
+    justify-content: center;
+    padding: var(--size-4-2);
+    --icon-size: 28px;
+    --icon-stroke: var(--icon-xl-stroke-width);
+}
+
+.titlebar-button {
+    color: var(--text-color);
+}
+
+.canvas-edges path.canvas-display-path {
+    pointer-events: none;
+    stroke-width: 3px;
+    stroke: var(--border-color);
+    fill: none;
+    transition: none;
+    transform: none;
+}
+
+.canvas-node-container {
+    background-color: var(--background-color);
+    border-color: var(--border-color);
+    border-radius: 10px;
+}
+
+.nav-file-title {
+    font-weight: regular;
+    font-size: 13px;
+    background-color: #000000 !important;
+    color: var(--text-color) !important;
+}
+
+.nav-file-title.is-active,
+.nav-file-title:hover {
+    color: var(--primary-color) !important;
+    border-radius: 5px;
+}
+
+.nav-folder-title {
+    font-weight: regular;
+    font-size: 13px;
+    background-color: #000000 !important;
+    color: var(--text-color) !important;
+}
+
+.nav-folder-title.is-active,
+.nav-folder-title:hover {
+    color: var(--primary-color) !important;
+    border-radius: 5px;
+}
+
+.theme-dark .markdown-preview-section {
+    font-size: var(--font-size-normal) !important;
+}
+
+.markdown-preview-view .task-list-item.is-checked {
+    color: rgb(122, 122, 122);
+    text-decoration: line-through;
+}
+
+.theme-dark .cm-editor {
+    font-size: var(--font-size-normal) !important;
+}
+
+
+.workspace-tab-header.is-active::before,
+.workspace-tab-header.is-active::after {
+    display: none;
+}
+
+svg * {
+    stroke-linecap: square;
+    stroke-linejoin: miter;
+    rx: 0;
+    ry: 0;
+}
+
+.menu {
+    padding: var(--size-2-1);
+}
+
+.menu-item {
+    padding: var(--size-4-1) var(--size-4-2);
+}
+
+.menu-separator {
+    margin: var(--size-2-1) calc(var(--size-2-1) * -1);
+}
+
+.workspace-tab-header-inner {
+    background-color: transparent !important;
+}
+
+.workspace .mod-root .workspace-tab-header-container {
+    /* border-bottom:0 */
+
+}
+
+.workspace .mod-root .workspace-tab-header-container-inner {
+    padding: 0px 0 0px 5px;
+    margin: 5px 0 2px -2px;
+
+}
+
+.workspace .mod-root .workspace-tab-header.is-active {
+    background: none;
+    box-shadow: none;
+
+}
+
+.workspace .mod-root .workspace-tab-header.is-active::before,
+.workspace .mod-root .workspace-tab-header.is-active::after {
+    display: none;
+
+}
+
+.workspace .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner {
+    background: var(--background-modifier-hover);
+}
+
+/* Theme-specific colour tweaks */
+/* .theme-light.minimal-atom-light .workspace .mod-root .is-active .workspace-tab-header-inner,
+    .theme-light.minimal-catppuccin-light .workspace .mod-root .is-active .workspace-tab-header-inner  {
+        background: hsl(var(--base-h), var(--base-s), calc(var(--base-l) - 6%))
+    } */
+
+.workspace .mod-root .workspace-tab-header {
+    padding-left: 3px;
+    padding-right: 5px;
+
+}
+
+.workspace .mod-root .workspace-tab-header .workspace-tab-header-inner {
+    gap: 0 !important;
+}
+
+/* Hide tab separator bar */
+.workspace .mod-root .workspace-tab-header-inner::after {
+    display: none;
+}
+
+/* Hover tab styles */
+.workspace .mod-root .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
+    background: var(--bg2);
+}
+
+/* Hide buttons until hover */
+.workspace .mod-root .workspace-tab-header:not(.is-active) .workspace-tab-header-inner-close-button,
+.workspace .mod-root .workspace-tab-header:not(.is-active) .workspace-tab-header-status-icon {
+    opacity: 0;
+}
+
+.workspace .mod-root .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner-close-button,
+.workspace .mod-root .workspace-tab-header:not(.is-active):hover .workspace-tab-header-status-icon {
+    opacity: 1;
+}
+
+/* Less prominent pinned icon */
+.workspace .mod-root .workspace-tab-header.is-active .workspace-tab-header-status-icon {
+    opacity: 0.6 !important;
+}
+
+.workspace .mod-root .workspace-tab-header:not(.is-active) .workspace-tab-header-inner-close-button {
+    position: absolute;
+    right: 6px;
+    margin-top: 0px;
+}
+
+.workspace .mod-root .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner-close-button {
+    background: var(--bg2);
+}
+
+/* Fade graphic to make hover close button look less harsh */
+.workspace .mod-root .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner-close-button::before {
+    content: '';
+    display: block;
+    position: absolute;
+    background: linear-gradient(to right, transparent, var(--bg2)) !important;
+    right: 100%;
+    height: 1em;
+    width: 1em;
+    pointer-events: none;
+}
+
+/* Smaller buttons */
+.workspace .mod-root .workspace-tab-header-inner-close-button,
+.workspace .mod-root .workspace-tab-header-status-icon {
+    transform: scale(0.9) translate(2px, 1px);
+    transform-origin: center;
+}
+
+/* Smaller new tab button */
+.workspace .mod-root .workspace-tab-header-new-tab {
+    margin-left: 4px;
+}
+
+.workspace .mod-root .workspace-tab-header-new-tab .clickable-icon {
+    transform: scale(0.8) translate(0, 1px);
+}
+
+
+/* Variable width tabs WIP */
+.workspace .mod-root .workspace-tab-header-inner {
+    /* width:auto; */
+}
+
+.workspace .mod-root .workspace-tab-header {
+    color: var(--text-color);
+    font-weight: 400;
+
+    /* width:auto;
+    flex: none;
+    flex-shrink: 1;
+    max-width:25% */
+}
